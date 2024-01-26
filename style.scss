@@ -1,0 +1,158 @@
+/*
+Theme Name: Motaphoto
+Theme URI: https://motaphoto.com
+Author: OpenClassrooms
+Author URI: https://openclassrooms.com
+Description: Thème pour le site motaphoto.com
+Version: 1.0
+Tags: motaphoto
+Text Domain: motaphoto
+*/
+
+html, body {
+    margin: 0px !important;
+    font-family: "SpaceMono";
+}
+
+header {
+    margin: 10px 120px 0px 120px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+    img {
+        object-fit: contain;
+    }
+
+    nav { 
+    display: flex;
+    align-items: center;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            padding: 0px;     
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-left: 40px;
+            color: black;
+        }
+
+        span {
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-left: 40px;
+            color: black;
+            cursor: pointer;
+        }
+    }
+}
+
+.navmobile {
+    display: none;
+}
+
+.modale {
+    display: none;
+    height: 100vh;
+    background-color: #B8BBC2;
+    opacity: 90%;
+    &__bouton {
+
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 1 !important;
+
+        height: 80%;
+        width:  50%;
+        margin: auto;
+        background-color: white;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    form {
+
+        input {
+            width: 50%;
+        }
+    }
+
+    form span input, form span textarea {
+        border: 1px solid #B8BBC2;
+        border-radius: 5px;
+        height: 30px;
+    }
+}
+
+@font-face {
+    font-family: 'SpaceMono';
+    src: url("fonts/SpaceMono-Regular.ttf") format("truetype");
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        display: flex;
+        align-items: center;
+        height: 90px;
+        margin: 10px 50px 0 50px;
+
+        img {
+            object-fit: none;
+            width: 250px;
+        }
+
+        nav {
+            display: none;
+        }
+    }
+
+    .navmobile {
+        ul {
+            list-style-type: none;
+        }
+
+        &__bouton {
+            display: block !important;
+            width: 40px;
+            height: 30px;
+            cursor: pointer;
+            content: url(medias/close.png);
+            &-open {
+                content: url(medias/open.png);
+            }
+        }
+
+        &__open {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            
+            height: 100vh;
+            background-color: #E00000;
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        span {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+            cursor: pointer;
+        }
+    }  
+}

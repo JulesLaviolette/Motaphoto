@@ -1,9 +1,133 @@
+@charset "UTF-8";
 /*
 Theme Name: Motaphoto
 Theme URI: https://motaphoto.com
 Author: OpenClassrooms
 Author URI: https://openclassrooms.com
 Description: Thème pour le site motaphoto.com
+Version: 1.0
 Tags: motaphoto
 Text Domain: motaphoto
 */
+html, body {
+  margin: 0px !important;
+  font-family: "SpaceMono";
+}
+
+header {
+  margin: 10px 120px 0px 120px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+header img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+header nav {
+  display: flex;
+  align-items: center;
+}
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0px;
+}
+header nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left: 40px;
+  color: black;
+}
+header nav span {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left: 40px;
+  color: black;
+  cursor: pointer;
+}
+
+.navmobile {
+  display: none;
+}
+
+.modale {
+  display: none;
+  height: 100vh;
+  background-color: #B8BBC2;
+  opacity: 90%;
+}
+.modale__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1 !important;
+  height: 80%;
+  width: 50%;
+  margin: auto;
+  background-color: white;
+}
+.modale img {
+  width: 100%;
+}
+.modale form input {
+  width: 50%;
+}
+.modale form span input, .modale form span textarea {
+  border: 1px solid #B8BBC2;
+  border-radius: 5px;
+  height: 30px;
+}
+
+@font-face {
+  font-family: "SpaceMono";
+  src: url("fonts/SpaceMono-Regular.ttf") format("truetype");
+}
+@media screen and (max-width: 900px) {
+  header {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    margin: 10px 50px 0 50px;
+  }
+  header img {
+    -o-object-fit: none;
+       object-fit: none;
+    width: 250px;
+  }
+  header nav {
+    display: none;
+  }
+  .navmobile ul {
+    list-style-type: none;
+  }
+  .navmobile__bouton {
+    display: block !important;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    content: url(medias/close.png);
+  }
+  .navmobile__bouton-open {
+    content: url(medias/open.png);
+  }
+  .navmobile__open {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #E00000;
+  }
+  .navmobile a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+  }
+  .navmobile span {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=style.css.map */
