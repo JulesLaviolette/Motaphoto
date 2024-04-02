@@ -14,6 +14,13 @@ html, body {
     font-family: "SpaceMono";
 }
 
+h2 {
+    font-weight: normal;
+}
+
+.page {
+    margin: 0px 200px;
+}
 header {
     margin: 10px 120px 0px 120px;
     display: flex;
@@ -56,13 +63,140 @@ header {
     display: none;
 }
 
+.hero {
+    display: flex;
+    justify-content: center;
+    &__img {
+        width: 100%;
+        height: 900px;
+        object-fit: cover;
+    }
+
+    &__title{
+        position: absolute;
+        display: block;
+        height: 100px;
+        top: 400px;
+        width: 1000px;
+        object-fit: contain;
+    }
+}
+
+.galerie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    &__photo {
+        position: relative;
+        height: 600px;
+        width: 600px;
+        margin-top: 30px;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.Post {
+    height: calc(100vh - 85px);
+    &__title {
+        font-style: italic;
+        font-size: 70px;
+        margin: 0px;
+    }
+    &__image {
+        display: flex;
+        img {
+            max-height: calc(100vh - 203px);
+            object-fit: contain;
+            width: 100%;
+            height: auto;
+            max-width: 480px;
+            margin-left: 100px;
+        }
+    }
+    &__info {
+        width: 50%;
+        border-bottom: solid 2px black;
+    }
+    &__content {
+        display: flex;
+        align-items: end;
+    }
+    &__nav {
+        height: 118px;
+        border-bottom: solid 2px black;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        margin-right: 50%;
+        background-color: #D8D8D8;
+        width: 300px;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+    &__arrow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: inherit;
+        margin-top: 10px;
+        img {
+            position: absolute;
+            height: 80px;
+        }
+
+        &-thumbnail {
+            height: 80px;
+            width: 80px;
+        }
+
+        &-left {
+            content: url(medias/arrowleft.png);
+            margin-right: 20px;
+        }
+        &-right {
+            content: url(medias/arrowright.png);
+        }
+    }
+
+    &__suggest {
+        margin-top: 100px;
+        &-image {
+            margin-top: 80px;
+            display: flex;
+            height: 50vh;
+            justify-content: space-around;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
 .modale {
     display: none;
+    position: fixed;
     height: 100vh;
     background-color: #B8BBC2;
-    opacity: 90%;
+    background-color: rgba(0,0,0,0.8);
+    top: 0;
+    right: 0;
+    left: 0;
     &__bouton {
-
+        cursor: pointer;
     }
 
     &__content {
@@ -70,29 +204,185 @@ header {
         flex-direction: column;
         align-items: center;
         opacity: 1 !important;
-
-        height: 80%;
-        width:  50%;
+        height: 85%;
+        width:  33%;
         margin: auto;
+        margin-top: 100px;
         background-color: white;
     }
 
     img {
         width: 100%;
+        margin-bottom: 7%;
     }
 
-    form {
+    form span .input, #message{
+        width: 100%;
+        border: 1px solid #B8BBC2;
+        border-radius: 5px;
+        height: 40px;
+        display: flex;
+        background-color: white;
+        cursor: text;
+    }
 
-        input {
-            width: 50%;
+    #message {
+        height: 200px;
+    }
+
+    form input {
+        width: 100%;
+        height: 50px;
+        border: none;
+        background-color: #D8D8D8;
+        cursor: pointer;
+    }
+}
+
+
+
+.survol {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0%;
+
+    &__single {
+        position: relative;
+        width: 50%;
+
+        .survol {
+            max-width: 480px;
+            margin-left: 100px;
         }
     }
 
-    form span input, form span textarea {
-        border: 1px solid #B8BBC2;
-        border-radius: 5px;
-        height: 30px;
+    &:hover {
+        background-color: rgba(0,0,0,0.5);
+        opacity: 1;
     }
+
+    .eye {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .fullscreen {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
+    }
+}
+
+.tri {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+
+    &__list{
+        list-style: none;
+        border: solid 1px #B8BBC2;
+        border-radius: 10px;
+    }        
+
+    &__filter{
+        background-color: white;
+        width: 260px;
+        height: 50px;
+        padding: 0px 15px;
+        cursor: pointer;
+        &-format{
+            margin-right: 40%;
+        }
+        &-hide{
+            display: none;
+        }
+        &-show{
+            display: block;
+        }
+        img {
+            object-fit: none;
+            cursor: pointer;
+        }
+    }
+}
+
+.load_more {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    p {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #D8D8D8;
+        border-radius: 3px;
+        height: 50px;
+        width: 15em;
+    }
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    &__content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 100vh;
+        margin-left: 200px;
+        margin-right: 200px;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__button{
+        object-fit: contain;
+        cursor: pointer;
+        position: fixed;
+        opacity: 0.5;
+        transition: 0.3s;
+        &:hover{
+            opacity: 1;
+        }
+        &-prev{
+            content: url(medias/lbleft.png);
+            top: 50%;
+            left: 50px;
+        }
+        &-next{
+            content: url(medias/lbright.png);
+            top: 50%;
+            right: 50px;
+        }
+        &-close{
+            content: url(medias/lbclose.png);
+            top: 50px;
+            right: 50px;
+        }
+    }
+
 }
 
 @font-face {
