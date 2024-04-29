@@ -19,7 +19,7 @@ h2 {
 }
 
 .page {
-    margin: 0px 200px;
+    margin: 0px 100px;//reduire margin et jouer avec les maxwidth/padding
 }
 header {
     margin: 10px 120px 0px 120px;
@@ -58,7 +58,13 @@ header {
         }
     }
 }
-
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    margin: 0px;
+}
 .navmobile {
     display: none;
 }
@@ -85,7 +91,7 @@ header {
 .galerie {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     &__photo {
         position: relative;
         height: 600px;
@@ -100,7 +106,6 @@ header {
 }
 
 .Post {
-    height: calc(100vh - 85px);
     &__title {
         font-style: italic;
         font-size: 70px;
@@ -112,17 +117,17 @@ header {
             max-height: calc(100vh - 203px);
             object-fit: contain;
             width: 100%;
-            height: auto;
-            max-width: 480px;
-            margin-left: 100px;
+            height: 100%;
         }
     }
     &__info {
-        width: 50%;
         border-bottom: solid 2px black;
+        width: 50%;
     }
     &__content {
+        height: calc(100vh - 205px);
         display: flex;
+        justify-content: space-between;
         align-items: end;
     }
     &__nav {
@@ -157,6 +162,8 @@ header {
         }
 
         &-thumbnail {
+            display: flex;
+            justify-content: center;
             height: 80px;
             width: 80px;
         }
@@ -176,7 +183,8 @@ header {
             margin-top: 80px;
             display: flex;
             height: 50vh;
-            justify-content: space-around;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
             img {
                 width: 100%;
                 height: 100%;
@@ -187,6 +195,8 @@ header {
 }
 
 .modale {
+    position: fixed;
+    z-index: 2;
     display: none;
     position: fixed;
     height: 100vh;
@@ -251,12 +261,6 @@ header {
 
     &__single {
         position: relative;
-        width: 50%;
-
-        .survol {
-            max-width: 480px;
-            margin-left: 100px;
-        }
     }
 
     &:hover {
@@ -293,22 +297,47 @@ header {
         list-style: none;
         border: solid 1px #B8BBC2;
         border-radius: 10px;
+        height: 100%;
+        padding-left: 0px;
     }        
 
     &__filter{
-        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
         width: 260px;
         height: 50px;
         padding: 0px 15px;
         cursor: pointer;
+        border-radius: inherit;
+
+        &__arrow{
+            &-closed{
+                background-repeat: no-repeat;
+                background-position: bottom 50% right 5%;
+                background-image: url(medias/filter_close.png);
+            }
+            &-opened{
+                background-repeat: no-repeat;
+                background-position: bottom 50% right 5%;
+                background-image: url(medias/filter_open.png) !important;
+            }
+        }
+        &-cat{
+            margin-right: 20px;
+        }
         &-format{
-            margin-right: 40%;
+            margin-right: 30%;
         }
         &-hide{
             display: none;
         }
         &-show{
-            display: block;
+            transition: 0.3s;
+            &:hover{
+                background-color: #FFD6D6;
+            }
         }
         img {
             object-fit: none;
@@ -335,6 +364,9 @@ header {
 }
 
 .lightbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -342,18 +374,28 @@ header {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
 
-    &__content{
+    &__content{///regler taille pour cadrer sub
         display: flex;
         justify-content: center;
-        align-items: center;
+        flex-direction: column;
 
-        min-height: 100vh;
+        max-width: fit-content;
+        height: fit-content;
         margin-left: 200px;
         margin-right: 200px;
 
-        img{
+        &-sub{
+            display: flex;
+            justify-content: space-between;
             width: 100%;
-            height: auto;
+        }
+
+        img{///entourer div
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 90vh;
+            object-fit: contain;
         }
     }
 
@@ -382,6 +424,12 @@ header {
             right: 50px;
         }
     }
+    &__ref{
+        color: white;
+    }
+    &__cat{
+        color: white;
+    }
 
 }
 
@@ -389,8 +437,140 @@ header {
     font-family: 'SpaceMono';
     src: url("fonts/SpaceMono-Regular.ttf") format("truetype");
 }
+@media screen and (max-width: 400px) {
+    .hero .hero__title {
+        width: 250px!important;
+    }
 
-@media screen and (max-width: 900px) {
+header img {
+        left: 0!important;
+    }
+    .Post__info {
+        .Post__title {
+            font-size: 15px!important;
+
+        }
+        p {
+            font-size: 10px;
+            margin: 5px;
+        }
+    }
+    .navmobile__bouton {
+        height: 20px!important;
+        width: 20px!important;
+        object-fit: contain;
+        right: 10px!important;
+
+    }
+
+    .tri__filter {
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .hero .hero__title {
+        width: 400px;
+        top: 200px;
+    }
+    .hero .hero__img {
+        height: 300px;
+    }
+    .navmobile__open {
+        font-size: 25px!important;
+    }
+
+    .Post__nav {
+        justify-content: space-between;
+    }
+
+    .Post__contact {
+        margin-right: 0px;
+    }
+
+    .Post__info .Post__title {
+        font-size: 30px;
+    }
+
+    .galerie__photo{
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .lightbox__content{
+        margin: 0px; 
+        img {
+            max-width: 400px;
+        }
+    }
+}
+
+@media screen and (max-width: 1500px) {
+
+    .survol__single{
+        max-width: 700px;
+    }
+    .lightbox__content{
+        margin: 0px 80px;
+        img {
+            max-width: 800px;
+        }
+    }
+    .page {
+        margin: 0px 30px;
+    }
+
+    .tri {
+        justify-content: space-between;
+        overflow-x: auto;
+        &__filter-format {
+            margin-right: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .hero__title {
+        width: 600px;
+        top: 300px;
+    }
+    .hero__img {
+        height: 500px;
+    }
+    .Post__arrow img {
+        height: 50px;
+    }
+    .Post__nav {
+        height: 70px;
+    }
+    .Post__content{
+        height: auto;
+    }
+
+    .survol__single{
+        max-width: 600px;
+    }
+    .Post__title {
+        font-size: 40px;
+    }
+
+    .lightbox__button-next {
+        content: url(medias/phoneright.png);
+        right: 10px;
+    }
+
+    .lightbox__button-prev {
+        content: url(medias/phoneleft.png);
+        left: 10px
+    }
+}
+
+@media screen and (max-width: 1400px) {
+
+    .Post__arrow-left {
+        margin: 0px;
+    }
+
     header {
         display: flex;
         align-items: center;
@@ -400,6 +580,8 @@ header {
         img {
             object-fit: none;
             width: 250px;
+            position: absolute;
+            left: 50px;
         }
 
         nav {
@@ -410,6 +592,8 @@ header {
     .navmobile {
         ul {
             list-style-type: none;
+            margin: 0px;
+            padding: 0px;
         }
 
         &__bouton {
@@ -418,18 +602,31 @@ header {
             height: 30px;
             cursor: pointer;
             content: url(medias/close.png);
+            position: absolute;
+            right: 50px;
             &-open {
                 content: url(medias/open.png);
             }
         }
 
         &__open {
+            position: absolute;
+            top: 90px;
+            z-index: 1;
             display: flex;
             align-items: center;
             flex-direction: column;
             
+            width: 100%;
             height: 100vh;
             background-color: #E00000;
+            text-align: center;
+            font-size: 50px;
+            padding-top: 300px;
+
+            &span, li {
+                padding: 20px;
+            }
         }
 
         a {

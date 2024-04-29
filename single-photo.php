@@ -26,11 +26,10 @@ $previous = get_previous_post();
 			<p>TYPE : <?php echo $type; ?></p>
 			<p>ANNÉE : <? echo get_the_date( 'Y'); ?></p>
 		</div>
-
 		<div class="survol__single">
 			<span class="Post__image"><?php echo get_the_post_thumbnail();?></span>
 			<div class="survol">
-				<img class="fullscreen" data-id="<?php echo get_the_ID();?>" src="<?php echo get_template_directory_uri() ?>/medias/fullscreen.png">
+				<img class="fullscreen" data-ref="<?php echo $ref?>" data-cat="<?php foreach($categories as $categorie) {echo $categorie->name;} ?>" data-img="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri() ?>/medias/fullscreen.png">
 			</div>
 		</div>
 

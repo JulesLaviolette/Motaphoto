@@ -17,13 +17,13 @@
         ?>
         <span class="modale__bouton" >Contact</span>
     </nav>
-</header>
-<div class="navmobile">
-        <?php
-            wp_nav_menu([
-                'theme_location' => 'main-menu',
-            ]);
-        ?>
-        <span class="modale__bouton" >Contact</span>
+    <div class="navmobile">
+            <?php
+                wp_nav_menu([
+                    'theme_location' => 'main-menu',
+                ]);
+            ?>
+            <span class="modale__bouton" >Contact</span>
 </div>
+</header>
 

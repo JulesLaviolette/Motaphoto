@@ -31,20 +31,20 @@
 </div>
 
 <div class="tri page">
-        <ul class="tri__list">
-            <li id="cat" class="tri__filter" data-cat="">CATÉGORIES</li>
+        <ul class="tri__list tri__filter-cat">
+            <li id="cat" class="tri__filter tri__filter__arrow-closed" data-cat="">CATÉGORIES</li>
             <?php foreach($categories as $cat) : ?>
                 <li class="tri__filter tri__filter-hide cat" data-cat="<?=$cat->slug; ?>"><?= $cat->name ?></li>
             <?php endforeach ?>
         </ul>
         <ul class="tri__list tri__filter-format">
-            <li id="form" class="tri__filter" data-form="">FORMATS</li>
+            <li id="form" class="tri__filter tri__filter__arrow-closed" data-form="">FORMATS</li>
             <?php foreach($formats as $form) : ?>
                 <li class="tri__filter tri__filter-hide form" data-form="<?=$form->slug; ?>"><?= $form->name ?></li>
             <?php endforeach ?>
         </ul>
         <ul class="tri__list">
-            <li id="ordre" class="tri__filter" data-ordre="">TRIER PAR</li>
+            <li id="ordre" class="tri__filter tri__filter__arrow-closed" data-ordre="">TRIER PAR</li>
             <li class="tri__filter tri__filter-hide ordre" data-ordre="ASC">ANCIENNES</li>
             <li class="tri__filter tri__filter-hide ordre" data-ordre="DESC">RÉCENTES</li>
         </ul>         
@@ -55,7 +55,7 @@
 
 $args= array(
 
-			'posts_per_page' => 2, 
+			'posts_per_page' => 12, 
 
 			'post_type' => 'photo',
             'orderby' => 'date',

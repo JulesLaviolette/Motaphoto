@@ -19,29 +19,24 @@ function weichie_load_more()
   $ordre = $_POST['ordre'];
   $args= array(
     'post_type' => 'photo',
-    'posts_per_page' => 2,
+    'posts_per_page' => 12,
     'orderby' => 'date',
-    'order' => 'DESC',
+    'order' => $ordre,
     'paged' => $_POST['paged'],
   );
-
   if (!empty($categorie)) {
-    $args['tax_query'] = array(
-      array (
+    $args['tax_query'][] = array(
       'taxonomy' => 'categorie',
       'field'    => 'slug',
       'terms'    => array($categorie)
-      )
     );
   }
 
   if (!empty($format)) {
-    $args['tax_query'] = array(
-      array (
+    $args['tax_query'][] = array(
       'taxonomy' => 'format',
       'field'    => 'slug',
       'terms'    => array($format)
-      )
     );
   }
 
@@ -54,7 +49,6 @@ function weichie_load_more()
       $response .= get_template_part('templates_part/photo_block');
     endwhile;
   } else {
-    var_dump('test');
     $response = '';
   }
 
@@ -74,16 +68,12 @@ function filter_ajax()
   $ordre = $_POST['ordre'];
   $args = array(  
     'post_type' => 'photo',
-    'posts_per_page' => 2,
+    'posts_per_page' => 12,
     'orderby' => 'date',
-    'order' => 'DESC',
-    'tax_query' => array(
-      'relation' => 'AND',
-      
-  )
+    'order' => $ordre,
   );
   if (!empty($format)) {
-    $args['tax_query'] = array(
+    $args['tax_query'][] = array(
       array (
       'taxonomy' => 'format',
       'field'    => 'slug',
@@ -92,8 +82,8 @@ function filter_ajax()
     );
   }
   
-  if (!empty($categorie)) {/* écrase la premiere tax_query*/
-    $args['tax_query'] = array(
+  if (!empty($categorie)) {
+    $args['tax_query'][] = array(
       array (
       'taxonomy' => 'categorie',
       'field'    => 'slug',
@@ -102,12 +92,6 @@ function filter_ajax()
     );
   }
 
-
-  /*if (!empty($ordre)) {
-    $args['order'] = $ordre
-  }*/
-  
-
   $ajaxposts = new WP_Query($args);
   if ($ajaxposts->have_posts()) {
 
@@ -115,7 +99,7 @@ function filter_ajax()
       $response .= get_template_part('templates_part/photo_block');
     endwhile;
   } else {
-    $response = 'Aucune photo ne correspond à ces critères';
+    $response = '';
   }
 
 

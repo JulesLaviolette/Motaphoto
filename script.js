@@ -16,11 +16,13 @@ jQuery(function($) {
     $('.navmobile__bouton').click(function(){
         $('.navmobile__bouton').toggleClass("navmobile__bouton-open");
         $('.navmobile').toggleClass("navmobile__open");
+        $('header').toggleClass("sticky");
     });
 
     $('nav > li').click(function(){
         $('.navmobile__bouton').toggleClass("navmobile__bouton-open");
         $('.navmobile').toggleClass("navmobile__open");
+        $('header').toggleClass("sticky");
     });
 
 
@@ -75,34 +77,48 @@ jQuery(function($) {
                 ordre: ordre,
             },
             success: function (res) {
-                console.log(res);
                 $('.galerie').append(res);
             }
         });
     });
 
-    
+    $('.tri__filter__arrow-closed').click(function(){
+        $('.tri__filter__arrow-closed').css('border','')
+        $(this).css('border','solid 1px rgb(33, 90, 255)')
+    });
+
+    $('.tri__filter__arrow-closed').click(function(){
+        $('.tri__filter__arrow-closed').toggleClass('tri__filter__arrow-opened')
+    });
+
     $(document).ready(function(){
         $(document).on('click', '.tri__filter-show', function(e){
+            currentPage = 1;
             e.preventDefault();
-            if (format == '' || $(this).data('form') != null) {
-                format = $(this).data('form');
-            }else if(format == $(this).data('form')) {
-                format = ''
-            }
-            if (categorie == '' || $(this).data('cat') != null) {
+            if (categorie == $(this).data('cat')) {
+                categorie = '';
+                $('.cat').css('background-color', '');
+            }else if($(this).data('cat') != null) {
                 categorie = $(this).data('cat');
-            }else if(categorie == $(this).data('cat')) {
-                categorie = ''
+                $('.cat').css('background-color', '');
+                $(this).css('background-color', '#FE5858');
             }
-            if (ordre == '' || $(this).data('ordre') != null) {
+            if (format == $(this).data('form')) {
+                format = '';
+                $('.form').css('background-color', '');
+            }else if($(this).data('form') != null) {
+                format = $(this).data('form');
+                $('.form').css('background-color', '');
+                $(this).css('background-color', '#FE5858');
+            }
+            if (ordre == $(this).data('ordre')) {
+                ordre = '';
+                $('.ordre').css('background-color', '');
+            }else if($(this).data('ordre') != null) {
                 ordre = $(this).data('ordre');
-            }else if(ordre == $(this).data('ordre')) {
-                ordre = ''
+                $('.ordre').css('background-color', '');
+                $(this).css('background-color', '#FE5858');
             }
-            console.log(categorie);
-            console.log(format);
-            console.log(ordre);
             $.ajax({
                 url: './wp-admin/admin-ajax.php',
                 data: {
@@ -111,7 +127,7 @@ jQuery(function($) {
                     format: format,
                     ordre: ordre,
                 },
-                dataType: 'html',//json
+                dataType: 'html',
                 type: 'POST',
                 success: function(result) {
                     $('.galerie').html(result);
@@ -122,34 +138,4 @@ jQuery(function($) {
         });
         });
     });
-   
-    /*class lightbox {
-        static init () {
-           $('.fullscreen').each($('.fullscreen').on('click',function(e){
-            e.preventDefault();
-            new lightbox($(this).data('id'))
-           }));
-        }
-
-        constructor (url) {
-            const element = this.buildDOM(url)
-            document.body.appendChild(element)
-        }
-
-        buildDOM (url) {
-            const dom = document.createElement('div')
-            dom.classList.add('lightbox')
-            dom.innerHTML = ''
-        }
-    }
-
-    lightbox.init()
-    /*<div class="lightbox">
-        <div class="lightbox__button lightbox__button-close"></div>
-        <div class="lightbox__button lightbox__button-prev"></div>
-        <div class="lightbox__button lightbox__button-next"></div>
-        <div class="lightbox__content">
-            <img src="https://picsum.photos/600/600" alt="">
-        </div>
-    </div>*/
 });
