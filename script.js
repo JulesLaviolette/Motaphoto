@@ -65,6 +65,7 @@ jQuery(function($) {
     let ordre = ''
     $('.load_more').on('click', function() {
         currentPage++;
+        
         $.ajax({
             type: 'POST',
             url: './wp-admin/admin-ajax.php',
@@ -78,6 +79,7 @@ jQuery(function($) {
             },
             success: function (res) {
                 $('.galerie').append(res);
+                Lightbox.init();
             }
         });
     });

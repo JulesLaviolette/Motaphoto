@@ -101,17 +101,6 @@ class Lightbox {
         return dom;
     }
 
-    /*<div class="lightbox__content">
-    <div>
-                <img src="http://localhost/Motaphoto/wp-content/uploads/2024/01/nathalie-2-scaled.jpeg" alt="">
-        
-        <div class="lightbox__content-sub">
-                    <span class="lightbox__ref">BF2387</span>
-                    <span class="lightbox__cat">CONCERT</span>
-                </div>
-    </div>
-            </div>*/
-
     updateInfo(ref, cat) {
         const refSpan = this.element.querySelector('.lightbox__ref');
         const catSpan = this.element.querySelector('.lightbox__cat');

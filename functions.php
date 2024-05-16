@@ -1,14 +1,18 @@
 <?php
-function register_my_menu() {
-    register_nav_menu( 'main-menu' , 'Menu-principal');
+function register_my_menus() {
+    register_nav_menus(
+      array(
+        'main-menu' => 'Menu-principal',
+        'footer' => 'Footer',
+      ));
 }
-add_action( 'after_setup_theme', 'register_my_menu');
+add_action( 'after_setup_theme', 'register_my_menus');
 
 
 function theme_enqueue_styles() {
     wp_enqueue_script( 'motascript', get_template_directory_uri() . '/script.js', array( 'jquery' ), '1.0');
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), '1.0' );
-
+    wp_enqueue_script('lightbox', get_template_directory_uri() . '/lightbox.js', array(), '1.0', true);
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles');
 

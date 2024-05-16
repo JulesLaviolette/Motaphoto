@@ -23,12 +23,13 @@ h2 {
 }
 
 header {
-  margin: 10px 120px 0px 120px;
+  padding: 10px 120px 0px 0px;
   display: flex;
   justify-content: space-between;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 header img {
+  padding-left: 5px;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -54,6 +55,30 @@ header nav span {
   margin-left: 40px;
   color: black;
   cursor: pointer;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  height: 40px;
+  border-top: 1px solid #000000;
+}
+footer ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  margin: 0px;
+}
+footer a, footer span {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  margin-right: 50px;
 }
 
 .sticky {
@@ -106,6 +131,9 @@ header nav span {
   height: 100%;
 }
 
+.Post {
+  margin-top: 20px;
+}
 .Post__title {
   font-style: italic;
   font-size: 70px;
@@ -178,9 +206,7 @@ header nav span {
   margin-top: 100px;
 }
 .Post__suggest-image {
-  margin-top: 80px;
   display: flex;
-  height: 50vh;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -211,8 +237,8 @@ header nav span {
   flex-direction: column;
   align-items: center;
   opacity: 1 !important;
-  height: 85%;
-  width: 33%;
+  height: 800px;
+  width: 600px;
   margin: auto;
   margin-top: 100px;
   background-color: white;
@@ -251,6 +277,7 @@ header nav span {
 }
 .survol__single {
   position: relative;
+  max-width: 50%;
 }
 .survol:hover {
   background-color: rgba(0, 0, 0, 0.5);
@@ -418,6 +445,13 @@ header nav span {
   src: url("fonts/SpaceMono-Regular.ttf") format("truetype");
 }
 @media screen and (max-width: 400px) {
+  footer {
+    flex-direction: column;
+    height: 100px;
+  }
+  footer ul {
+    flex-direction: column;
+  }
   .hero .hero__title {
     width: 250px !important;
   }
@@ -430,6 +464,9 @@ header nav span {
   .Post__info p {
     font-size: 10px;
     margin: 5px;
+  }
+  .Post__nav {
+    font-size: 10px;
   }
   .navmobile__bouton {
     height: 20px !important;
@@ -453,18 +490,35 @@ header nav span {
   .navmobile__open {
     font-size: 25px !important;
   }
+  .survol__single {
+    max-width: 100%;
+  }
+  .Post__content {
+    flex-direction: column-reverse;
+    align-items: start;
+  }
   .Post__nav {
     justify-content: space-between;
   }
   .Post__contact {
-    margin-right: 0px;
+    margin-right: 0px !important;
   }
-  .Post__info .Post__title {
-    font-size: 30px;
+  .Post__info {
+    width: 100%;
+    font-size: 20px !important;
+  }
+  .Post__title {
+    font-size: 30px !important;
   }
   .galerie__photo {
     max-height: 200px;
     max-width: 200px;
+  }
+  .modale__content {
+    max-width: 80%;
+    max-height: 75%;
+    background-color: initial;
+    color: white;
   }
   .lightbox__content {
     margin: 0px;
@@ -474,9 +528,6 @@ header nav span {
   }
 }
 @media screen and (max-width: 1500px) {
-  .survol__single {
-    max-width: 700px;
-  }
   .lightbox__content {
     margin: 0px 80px;
   }
@@ -510,9 +561,6 @@ header nav span {
   }
   .Post__content {
     height: auto;
-  }
-  .survol__single {
-    max-width: 600px;
   }
   .Post__title {
     font-size: 40px;
